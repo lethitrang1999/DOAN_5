@@ -18,6 +18,11 @@ namespace BLL
         {
             return _res.Create(model);
         }
+
+        public bool Update(ProductModel model)
+        {
+            return _res.Update(model);
+        }
         public ProductModel GetDatabyID(string id)
         {
             return _res.GetDatabyID(id);

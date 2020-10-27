@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { OrderComponent } from './order/order.component';
-import { ProductComponent } from './product/product.component';
-import { TypeComponent } from './type/type.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
+import {OrderComponent} from './order/order.component';
+import {ProductComponent} from './product/product.component';
+import {TypeComponent} from './type/type.component';
+import {SharedModule} from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [ 
-    OrderComponent,ProductComponent,TypeComponent
+  declarations: [
+    OrderComponent, ProductComponent, TypeComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +26,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
         path: 'type',
         component: TypeComponent,
       },
-  ]),  
+    ]),
   ]
 })
-export class ProductModule { }
+export class ProductModule {
+}

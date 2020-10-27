@@ -28,6 +28,14 @@ namespace API.Controllers
             return model;
         }
 
+        [Route("update-item")]
+        [HttpPost]
+        public ProductModel UpdateItem([FromBody] ProductModel model)
+        {
+            _itemBusiness.Update(model);
+            return model;
+        }
+
         [Route("get-by-id/{id}")]
         [HttpGet]
         public ProductModel GetDatabyID(string id)

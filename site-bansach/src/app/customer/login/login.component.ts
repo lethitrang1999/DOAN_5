@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent extends BaseComponent implements OnInit {
   public registerForm: FormGroup;
   public loginForm: FormGroup;
-  constructor(injector: Injector) { 
+  constructor(injector: Injector) {
     super(injector);
   }
 
@@ -31,14 +31,15 @@ export class LoginComponent extends BaseComponent implements OnInit {
       remember: new FormControl(false, []),
     });
   }
-  onSubmitLogin(value: any) { 
+  onSubmitLogin(value: any) {
 
   }
-  onSubmitRegister(value: any) { 
+
+  onSubmitRegister(value: any) {
 
     this._api.post('/api/customer/create-item', {customer_email:value.email, customer_password:value.password} ).takeUntil(this.unsubscribe).subscribe(res => {
      alert('Tạo thành công');
-      }, err => { });      
+      }, err => { });
 
   }
 

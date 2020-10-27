@@ -8,6 +8,8 @@ namespace DAL
     public partial interface IProductRepository
     {
         bool Create(ProductModel model);
+
+        bool Update(ProductModel model);
         ProductModel GetDatabyID(string id);
         List<ProductModel> GetDataAll();
         List<ProductModel> GetDatakhuyenmai();

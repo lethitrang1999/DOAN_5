@@ -8,6 +8,9 @@ namespace BLL
     public partial interface IItemBusiness
     {
         bool Create(ProductModel model);
+
+        bool Update(ProductModel model);
+
         ProductModel GetDatabyID(string id);
         List<ProductModel> GetDataAll();
         List<ProductModel> GetDatakhuyenmai();
