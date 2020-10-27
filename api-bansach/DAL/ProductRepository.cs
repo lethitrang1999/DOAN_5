@@ -50,7 +50,8 @@ namespace DAL
                 "@item_group_id", model.item_group_id,
                 "@item_image", model.item_image,
                 "@item_name", model.item_name,
-                "@item_price", model.item_price);
+                "@item_price", model.item_price,
+                "@item_mota", model.item_mota);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -62,6 +63,26 @@ namespace DAL
                 throw ex;
             }
         }
+
+        public bool Delete(ProductModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_item_delete",
+                "@item_id", model.item_id);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public ProductModel GetDatabyID(string id)
         {
@@ -79,6 +100,7 @@ namespace DAL
                 throw ex;
             }
         }
+
         public List<ProductModel> GetDataAll()
         {
             string msgError = "";

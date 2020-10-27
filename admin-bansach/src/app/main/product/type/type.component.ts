@@ -23,26 +23,26 @@ export class TypeComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.formsearch = this.fb.group({
       'hoten': [''],
-      'taikhoan': [''],     
+      'taikhoan': [''],
     });
     this.search();
   }
 
-  loadPage(page) { 
-    this._api.post('/api/item_group/search',{page: page, pageSize: this.pageSize, }).takeUntil(this.unsubscribe).subscribe(res => {
-      this.product_groups = res.data;
-      this.totalRecords =  res.totalItems;
-      this.pageSize = res.pageSize;
+  loadPage(page) {
+    this._api.get('/api/ItemGroup/get-menu').takeUntil(this.unsubscribe).subscribe(res => {
+      this.product_groups = res;
+      this.totalRecords =  Object.keys(res).length;
+      this.pageSize = 5;
       });
   }
 
-  search() { 
+  search() {
     this.page = 1;
     this.pageSize = 5;
-    this._api.post('/api/item_group/search',{page: this.page, pageSize: this.pageSize}).takeUntil(this.unsubscribe).subscribe(res => {
-      this.product_groups = res.data;
-      this.totalRecords =  res.totalItems;
-      this.pageSize = res.pageSize;
+    this._api.get('/api/ItemGroup/get-menu').takeUntil(this.unsubscribe).subscribe(res => {
+      this.product_groups = res;
+      this.totalRecords =  Object.keys(res).length;
+      this.pageSize = 5;
       });
   }
 
