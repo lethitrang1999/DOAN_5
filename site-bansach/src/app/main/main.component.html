@@ -3,8 +3,8 @@
 <!--top tags area end-->
 <div class="top_tags_area">
     <div class="container">
-        <div class="row">
-            <div class="col-3" style="background-color: #c1a89a; height: 313px;">
+        <div class="row" style=" height: 400px;">
+            <div class="col-3" style="background-color: #c1a89a; height: 420px;">
                 <div class="main_menu menu_position text-left">
                     <nav>
                         <ul>
@@ -27,14 +27,14 @@
                     </nav>
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col-6" style="height:400px;">
                 <section class=" mb-80">
                    
                         
                             <div class="container">
                                 <div class="row">
                                     <div class="col-12">
-                                        <img src="assets/img/slider/Anh1.jpg">
+                                        <img style="height: 400px;width: 677px;" src="assets/img/slider/Anh1.jpg">
                                         
                                     </div>
                                 </div>
@@ -70,6 +70,20 @@
                 </section>
                 <!--slider area end-->
             </div>
+            
+                <div class="col-lg-3 col-md-3">
+                    <figure class="abc1" style="border:1px soild #222222;">
+                        <div class="">
+                            <a href="shop.html"><img src="assets/img/product/123.jpg" alt=""></a>
+                        </div>
+                    </figure>
+                    <figure class="abc1" style="border:1px soild #222222;">
+                        <div class="">
+                            <a href="shop.html"><img src="assets/img/product/1234.jpg" alt=""></a>
+                        </div>
+                    </figure>
+                </div>
+                
         </div>
     </div>
 </div>
@@ -150,10 +164,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="section_title">
-                        <h2><span>Sá</span>ch</h2>
-
-                    </div>
+                   
                     <div class="product_tab_btn">
                         <ul class="nav" role="tablist">
                             <li>
@@ -161,16 +172,7 @@
                                         Sản phẩm bán chạy
                                     </a>
                             </li>
-                            <li>
-                                <a data-toggle="tab" href="#Featured" role="tab" aria-controls="Featured" aria-selected="false">
-                                        Sách nổi bật
-                                    </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#Arrivals" role="tab" aria-controls="Arrivals" aria-selected="false">
-                                       Sách mới
-                                    </a>
-                            </li>
+                           
                         </ul>
                     </div>
                 </div>
@@ -267,51 +269,68 @@
                     </div>
                 </div>
             </div> 
-            <div class="product_container">
-               <div class="row">
-                <ng-container *ngFor="let it of list_km">
-                    <div class="col-lg-3">
-                      <div class="product_style_left">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a class="primary_img" [routerLink]="['/product/chitiet',it.item_id]"><img src="{{it.item_image}}" alt=""></a>
-                                        <div class="label_product">
-                                            <span class="label_sale">-52%</span>
-                                        </div>
+            <div class="container">
+                <div class="col-xs-12 col-md-12 bootstrap snippets bootdeys">
+                    <!-- product -->
+                    <div class="product-content product-wrap clearfix">
+                <div class="product_container">
+                   <div class="row">
+                    <ng-container *ngFor="let it of list_km">
+                        <div class="col-lg-6" style="height: 250px;">
+                        <div class="col-md-5">
+                            <div class="product-image"> 
+                                <a class="img-responsive" [routerLink]="['/product/chitiet',it.item_id]"><img src="{{it.item_image}}" alt=""></a>
+                                
+                                <span class="tag2 hot">
+                                    HOT
+                                </span> 
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12" style="float: right;top: -210px;">
+                        <div class="product-deatil">
+                               
+                                    <h5 class="name"><a [routerLink]="['/product/chitiet',it.item_id]">{{it.item_name}}</a></h5>
+                               
+                                <p class="price-container">
+                                    <span>{{ it.item_price | number}} VNĐ</span>
+                                </p>
+                                <span class="tag1"></span> 
+                        </div>
+                        
+                            <div class="description">
+                                <p>{{it.item_mota}}</p>
+                            </div>
+                       
+                        <div class="product-info smart-form">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6"> 
+                                    <li style="list-style: none;" class="add_to_cart"><a (click)="addToCart(it)" title="Thêm Vào Giỏ">Thêm Vào Giỏ</a></li>
+                                  
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="rating">
+                                        <label for="stars-rating-5"><i class="fa fa-star"></i></label>
+                                        <label for="stars-rating-4"><i class="fa fa-star"></i></label>
+                                        <label for="stars-rating-3"><i class="fa fa-star text-primary"></i></label>
+                                        <label for="stars-rating-2"><i class="fa fa-star text-primary"></i></label>
+                                        <label for="stars-rating-1"><i class="fa fa-star text-primary"></i></label>
                                     </div>
-                                    <div class="product_content">
-                                        <p class="manufacture_product"><a href="#">Parts</a></p>
-                                        <h4 class="product_name"><a [routerLink]="['/product/chitiet',it.item_id]">{{it.item_name}}</a></h4>
-                                        <div class="product_rating">
-                                           <ul>
-                                               <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                               <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                               <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                               <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                               <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                           </ul>
-                                        </div>
-                                        <div class="price_box">  
-                                            <span class="current_price">{{ it.item_price | number}} VNĐ</span>
-                                        </div>
-                                        <div class="product_desc">
-                                            <p>{{it.item_mota}}</p>
-                                        </div>
-                                        <div class="action_links">
-                                             <ul>
-                                                <li class="add_to_cart"><a (click)="addToCart(it)" title="Thêm Vào Giỏ">Thêm Vào Giỏ</a></li>
-                                               
-                                            </ul>
-                                        </div> 
-                                    </div>
-                                </figure>
-                            </article>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                        </div>
                 </ng-container>
-               </div>
-            </div>
+    
+                  
+                   </div>
+                </div>
+                    </div>
+                </div>
+           
+       
+        <!--product area end-->
+    </div>
         </div>
     </div>
     <!--product area end-->
@@ -327,57 +346,38 @@
                     <div class="single_brand">
                         <a href="#"><img src="assets/img/brand/brand1.jpg" alt=""></a>
                     </div>
-                    <div class="single_brand">
-                        <a href="#"><img src="assets/img/brand/brand2.jpg" alt=""></a>
-                    </div>
+                    
                 </div>
                 <div class="brand_list">
                     <div class="single_brand">
                         <a href="#"><img src="assets/img/brand/brand3.jpg" alt=""></a>
                     </div>
-                    <div class="single_brand">
-                        <a href="#"><img src="assets/img/brand/brand4.jpg" alt=""></a>
-                    </div>
+                    
                 </div>
                 <div class="brand_list">
                     <div class="single_brand">
                         <a href="#"><img src="assets/img/brand/brand5.jpg" alt=""></a>
                     </div>
-                    <div class="single_brand">
-                        <a href="#"><img src="assets/img/brand/brand6.jpg" alt=""></a>
-                    </div>
+                   
                 </div>
-                <div class="brand_list">
-                    <div class="single_brand">
-                        <a href="#"><img src="assets/img/brand/brand7.jpg" alt=""></a>
-                    </div>
-                    <div class="single_brand">
-                        <a href="#"><img src="assets/img/brand/brand8.jpg" alt=""></a>
-                    </div>
-                </div>
+              
                 <div class="brand_list">
                     <div class="single_brand">
                         <a href="#"><img src="assets/img/brand/brand1.jpg" alt=""></a>
                     </div>
-                    <div class="single_brand">
-                        <a href="#"><img src="assets/img/brand/brand2.jpg" alt=""></a>
-                    </div>
+                   
                 </div>
                 <div class="brand_list">
                     <div class="single_brand">
                         <a href="#"><img src="assets/img/brand/brand3.jpg" alt=""></a>
                     </div>
-                    <div class="single_brand">
-                        <a href="#"><img src="assets/img/brand/brand4.jpg" alt=""></a>
-                    </div>
+                    
                 </div>
                 <div class="brand_list">
                     <div class="single_brand">
                         <a href="#"><img src="assets/img/brand/brand5.jpg" alt=""></a>
                     </div>
-                    <div class="single_brand">
-                        <a href="#"><img src="assets/img/brand/brand6.jpg" alt=""></a>
-                    </div>
+                    
                 </div>
             </div>
         </div>

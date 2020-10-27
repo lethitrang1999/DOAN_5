@@ -11,5 +11,6 @@ namespace Model
         public string item_image { get; set; }
         public decimal? item_price { get; set; }
         public string item_status { get; set; }
+        public string item_mota { get; set; }
     }
 }
