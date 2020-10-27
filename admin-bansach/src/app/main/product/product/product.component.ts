@@ -96,7 +96,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
     this.showUpdateModal = true;
     this.isCreate = false;
     setTimeout(() => {
-      $('#createProductModal').modal('toggle');
+      ($('#createProductModal') as any).modal('toggle');
       this._api.get('/api/item/get-by-id/' + row.item_id).takeUntil(this.unsubscribe).subscribe((res: any) => {
         this.product = res;
         console.log(this.product);
@@ -106,7 +106,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
           'item_image': [this.product.item_image, Validators.required],
           'item_name': [this.product.item_name, Validators.required],
           'item_price': [this.product.item_price, Validators.required],
-          'item_status': [this.product.item_status, Validators.required],
+          'describle': [this.product.describle, Validators.required],
         }, {
           // validator: MustMatch('matkhau', 'nhaplaimatkhau')
         });
@@ -136,7 +136,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
           item_name: value.item_name,
           item_image: data_image,
           item_price: value.item_price,
-          item_status: value.item_status
+          describle: value.describle
         };
         this._api.post('/api/item/create-item', temp).takeUntil(this.unsubscribe).subscribe(res => {
           alert('Thêm thành công');
@@ -154,7 +154,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
           item_name: value.item_name,
           item_image: value.item_image,
           item_price: value.item_price,
-          item_status: value.item_status
+          describle: value.describle
         };
         console.log('run in here');
         this._api.post('/api/item/update-item', temp).takeUntil(this.unsubscribe).subscribe(res => {
@@ -181,8 +181,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
       'item_image': ['', Validators.required],
       'item_name': ['', Validators.required],
       'item_price': ['', Validators.required],
-      'item_status': ['', Validators.required],
-      'role': [this.roles[0].value, Validators.required],
+      'describle': ['', Validators.required],
     });
   }
 
@@ -192,14 +191,14 @@ export class ProductComponent extends BaseComponent implements OnInit {
     this.isCreate = true;
     this.product = null;
     setTimeout(() => {
-      $('#createProductModal').modal('toggle');
+      ($('#createProductModal') as any).modal('toggle');
       this.formdata = this.fb.group({
         'item_group_id': [this.product.item_group_id, Validators.required],
         'item_id': [this.product.item_id, Validators.required],
         'item_image': [this.product.item_image, Validators.required],
         'item_name': [this.product.item_name, Validators.required],
         'item_price': [this.product.item_price, Validators.required],
-        'item_status': [this.product.item_status, Validators.required]
+        'describle': [this.product.describle, Validators.required]
       });
     }, 700);
 
@@ -208,7 +207,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
   }
 
   closeModal(): void {
-    $('#createProductModal').closest('.modal').modal('hide');
+    ($('#createProductModal') as any).closest('.modal').modal('hide');
   }
 
 }
