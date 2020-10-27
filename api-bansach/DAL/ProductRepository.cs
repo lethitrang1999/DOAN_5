@@ -100,7 +100,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_item_get_by_promotion");
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "san_pham_khuyen_mai");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<ProductModel>().ToList();
