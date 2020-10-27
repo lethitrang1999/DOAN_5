@@ -10,6 +10,8 @@ namespace DAL
         bool Create(ProductModel model);
 
         bool Update(ProductModel model);
+        bool Delete(ProductModel model);
+
         ProductModel GetDatabyID(string id);
         List<ProductModel> GetDataAll();
         List<ProductModel> GetDatakhuyenmai();

@@ -56,7 +56,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
     this.page = 1;
     this.pageSize = 5;
     this._api.get('/api/item/get-all').takeUntil(this.unsubscribe).subscribe(res => {
-      this.products = res || '';
+      this.products = res || [];
       this.totalRecords = Object.keys(res).length || 5;
       this.pageSize = 5;
     });
@@ -64,7 +64,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
 
   loadPage(page): void {
     this._api.get('/api/item/get-all').takeUntil(this.unsubscribe).subscribe(res => {
-      this.products = res || '';
+      this.products = res || [];
       this.totalRecords = Object.keys(res).length || 5;
       this.pageSize = 5;
     });
@@ -106,7 +106,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
           'item_image': [this.product.item_image, Validators.required],
           'item_name': [this.product.item_name, Validators.required],
           'item_price': [this.product.item_price, Validators.required],
-          'describle': [this.product.describle, Validators.required],
+          'item_mota': [this.product.item_mota, Validators.required],
         }, {
           // validator: MustMatch('matkhau', 'nhaplaimatkhau')
         });
@@ -136,7 +136,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
           item_name: value.item_name,
           item_image: data_image,
           item_price: value.item_price,
-          describle: value.describle
+          item_mota: value.item_mota
         };
         this._api.post('/api/item/create-item', temp).takeUntil(this.unsubscribe).subscribe(res => {
           alert('Thêm thành công');
@@ -154,7 +154,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
           item_name: value.item_name,
           item_image: value.item_image,
           item_price: value.item_price,
-          describle: value.describle
+          item_mota: value.item_mota
         };
         console.log('run in here');
         this._api.post('/api/item/update-item', temp).takeUntil(this.unsubscribe).subscribe(res => {
@@ -167,7 +167,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
   }
 
   onDelete(row): void {
-    this._api.post('/api/item/delete-item', {user_id: row.item_id}).takeUntil(this.unsubscribe).subscribe(res => {
+    this._api.post('/api/item/delete-item', {item_id: row.item_id}).takeUntil(this.unsubscribe).subscribe(res => {
       alert('Xóa thành công');
       this.search();
     });
@@ -181,7 +181,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
       'item_image': ['', Validators.required],
       'item_name': ['', Validators.required],
       'item_price': ['', Validators.required],
-      'describle': ['', Validators.required],
+      'item_mota': ['', Validators.required],
     });
   }
 
@@ -193,16 +193,15 @@ export class ProductComponent extends BaseComponent implements OnInit {
     setTimeout(() => {
       ($('#createProductModal') as any).modal('toggle');
       this.formdata = this.fb.group({
-        'item_group_id': [this.product.item_group_id, Validators.required],
-        'item_id': [this.product.item_id, Validators.required],
-        'item_image': [this.product.item_image, Validators.required],
-        'item_name': [this.product.item_name, Validators.required],
-        'item_price': [this.product.item_price, Validators.required],
-        'describle': [this.product.describle, Validators.required]
+        'item_group_id': ['', Validators.required],
+        'item_id': ['', Validators.required],
+        'item_image': ['', Validators.required],
+        'item_name': ['', Validators.required],
+        'item_price': ['', Validators.required],
+        'item_mota': ['', Validators.required]
       });
     }, 700);
 
-    this.formdata.get('role').setValue(this.roles[0].value);
     this.doneSetupForm = true;
   }
 

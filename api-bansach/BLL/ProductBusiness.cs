@@ -23,6 +23,12 @@ namespace BLL
         {
             return _res.Update(model);
         }
+
+        public bool Delete(ProductModel model)
+        {
+            return _res.Delete(model);
+        }
+
         public ProductModel GetDatabyID(string id)
         {
             return _res.GetDatabyID(id);

@@ -36,6 +36,14 @@ namespace API.Controllers
             return model;
         }
 
+        [Route("delete-item")]
+        [HttpPost]
+        public ProductModel DeleteItem([FromBody] ProductModel model)
+        {
+            _itemBusiness.Delete(model);
+            return model;
+        }
+
         [Route("get-by-id/{id}")]
         [HttpGet]
         public ProductModel GetDatabyID(string id)
