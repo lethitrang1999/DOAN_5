@@ -57,7 +57,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
     this.pageSize = 5;
     this._api.get('/api/item/get-all').takeUntil(this.unsubscribe).subscribe(res => {
       this.products = res || '';
-      this.totalRecords = res.length || 5;
+      this.totalRecords = Object.keys(res).length || 5;
       this.pageSize = 5;
     });
   }
@@ -65,7 +65,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
   loadPage(page): void {
     this._api.get('/api/item/get-all').takeUntil(this.unsubscribe).subscribe(res => {
       this.products = res || '';
-      this.totalRecords = res.length || 5;
+      this.totalRecords = Object.keys(res).length || 5;
       this.pageSize = 5;
     });
   }
@@ -117,13 +117,6 @@ export class ProductComponent extends BaseComponent implements OnInit {
 
   get f(): void {
     return this.formdata.controls;
-  }
-
-  onDelete(row): void {
-    this._api.post('/api/users/delete-user', {user_id: row.user_id}).takeUntil(this.unsubscribe).subscribe(res => {
-      alert('Xóa thành công');
-      this.search();
-    });
   }
 
   onSubmit(value): void {
@@ -181,7 +174,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
   }
 
   Reset(): void {
-    this.user = null;
+    this.product = null;
     this.formdata = this.fb.group({
       'item_group_id': [this.product.item_group_id, Validators.required],
       'item_id': [this.product.item_id, Validators.required],
