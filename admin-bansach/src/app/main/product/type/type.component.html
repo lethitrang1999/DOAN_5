@@ -16,7 +16,6 @@
         <p-table selectionMode="single" [value]="product_groups" styleClass="p-datatable-gridlines">
           <ng-template pTemplate="header">
             <tr>
-              <th style="width: 70px; text-align: center;">STT</th>
               <th style="width: 15%; text-align: left;">Mã Danh Mục Cấp</th>
               <th style="width: 20%; text-align: left;">Mã Danh Mục</th>
               <th style="text-align: left;">Tên Danh Mục</th>
@@ -41,7 +40,7 @@
                 </div>
               </td>
             </tr>
-            <ng-template *ngIf="item_group.children" pTemplate="body" let-item_children  let-i_children="rowIndex">
+            <!-- <ng-template *ngIf="item_group.children" pTemplate="body" let-item_children  let-i_children="rowIndex">
               <tr >
                 <td>{{ item_children.seq_num}}</td>
                 <td>{{ item_children.item_group_id}}</td>
@@ -58,7 +57,7 @@
                   </div>
                 </td>
               </tr>
-            </ng-template>
+            </ng-template> -->
           </ng-template>
         </p-table>
         <!-- PAGE CONTENT ENDS -->
